@@ -2,12 +2,11 @@ package com.hitmans.api.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.CreatedDate;
 
 @Data
 @Entity
 @Table(name = "hitmans")
-public class HitmansModel {
+public class Hitman {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

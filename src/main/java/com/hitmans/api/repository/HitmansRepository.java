@@ -1,7 +1,7 @@
 package com.hitmans.api.repository;
 
-import com.hitmans.api.model.HitmansModel;
+import com.hitmans.api.model.Hitman;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface HitmansRepository extends JpaRepository<HitmansModel, Integer> {
+public interface HitmansRepository extends JpaRepository<Hitman, Integer> {
 }
