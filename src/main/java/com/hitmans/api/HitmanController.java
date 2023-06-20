@@ -26,13 +26,12 @@ public class HitmanController {
     @GetMapping("/getHitman/{id}")
     public ResponseEntity<Object> getHitmanById(@PathVariable("id") int id) {
         if (id == 0) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Something wrong with your id parameter", HttpStatus.BAD_REQUEST);
         }
         Object hitman = service.getHitmanById(id);
-        if (hitman == null) {
-            return new ResponseEntity<>("The Hitman is not found", HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(hitman, HttpStatus.OK);
+        if (hitman == null || id > service.getAllHitmans().size()) {
+            return new ResponseEntity<>("The Hitman is not found", HttpStatus.NOT_FOUND);
+        } else return new ResponseEntity<>(hitman, HttpStatus.OK);
     }
 
     @PostMapping("/createHitman")
