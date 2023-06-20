@@ -18,7 +18,6 @@ public interface HitmanService {
 
     //CREATE/UPDATE
     Hitman createNewHitman(Hitman hitman);
-    Hitman updateHitmanById(int id, Hitman hitman);
 
 
 

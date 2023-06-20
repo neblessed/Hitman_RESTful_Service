@@ -24,7 +24,7 @@ public class HitmanServiceImplement implements HitmanService {
 
     @Override
     public void saveHitman(Hitman hitman) {
-
+        hitmansRepository.save(hitman);
     }
 
     @Override
@@ -38,8 +38,4 @@ public class HitmanServiceImplement implements HitmanService {
         return hitmansRepository.save(hitman);
     }
 
-    @Override
-    public Hitman updateHitmanById(int id, Hitman hitman) {
-        return null;
-    }
 }
