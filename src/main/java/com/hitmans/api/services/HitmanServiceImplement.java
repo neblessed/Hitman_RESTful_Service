@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class HitmanServiceImplement implements HitmanService{
+public class HitmanServiceImplement implements HitmanService {
     @Autowired
     HitmansRepository hitmansRepository;
 
@@ -29,6 +29,7 @@ public class HitmanServiceImplement implements HitmanService{
 
     @Override
     public void deleteHitmanById(int hitmanId) {
+        hitmansRepository.deleteById(hitmanId);
 
     }
 

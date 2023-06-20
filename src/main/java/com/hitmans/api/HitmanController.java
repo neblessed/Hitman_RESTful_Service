@@ -31,9 +31,7 @@ public class HitmanController {
         if (id == 0) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
         Object hitman = service.getHitmanById(id);
-        System.out.println(hitman);
         if (hitman == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -42,7 +40,23 @@ public class HitmanController {
 
     @PostMapping("/createHitman")
     public ResponseEntity<Object> createHitman(@RequestBody Hitman hitman) {
+        if (service.getAllHitmans().stream().anyMatch(x -> x.getId() == hitman.getId())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         Object newHitman = service.createNewHitman(hitman);
         return new ResponseEntity<>(newHitman, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/deleteHitman/{id}")
+    public ResponseEntity<Object> deleteHitman(@PathVariable("id") int id) {
+        if (id == 0) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Object hitman = service.getHitmanById(id);
+        if (hitman == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        service.deleteHitmanById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
