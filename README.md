@@ -5,7 +5,7 @@
 - **GET** (endpoint: "/getHitmanById/{id}")
 - **GET** (endpoint: "/getAllHitmans")
 - **DELETE** (endpoint: "/deleteHitman/{id}")
-- **PUT** (endpoin: "/editHitman")
+- **PUT** (endpoint: "/editHitman")
 - **POST** (endpoin: "/createHitman"):
 
 **Post/Put Hitman Body Example:**
@@ -24,7 +24,7 @@
 - **GET** (endpoint: "/getWeaponById/{id}")
 - **GET** (endpoint: "/getAllWeapons")
 - **DELETE** (endpoint: "/deleteWeaponById")
-- **PUT** (endpoin: "/editWeapon")
+- **PUT** (endpoint: "/editWeapon")
 - **POST** (endpoint: "/createWeapon"):
 
 **Post/Put Weapon Body Example:**
