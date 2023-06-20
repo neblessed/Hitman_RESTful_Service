@@ -6,12 +6,13 @@ import com.hitmans.api.services.HitmanServiceImplement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController()
-@RequestMapping("/api/v1")
+@RequestMapping("/api/hitman")
 public class HitmanController {
 
     @Autowired
@@ -47,10 +48,6 @@ public class HitmanController {
     public ResponseEntity<Object> deleteHitman(@PathVariable("id") int id) {
         if (id == 0) {
             return new ResponseEntity<>("This id is not found", HttpStatus.BAD_REQUEST);
-        }
-        Object hitman = service.getHitmanById(id);
-        if (hitman == null) {
-            return new ResponseEntity<>("The Hitman is not found", HttpStatus.BAD_REQUEST);
         }
         service.deleteHitmanById(id);
         return new ResponseEntity<>("The Hitman was successfully deleted", HttpStatus.OK);
