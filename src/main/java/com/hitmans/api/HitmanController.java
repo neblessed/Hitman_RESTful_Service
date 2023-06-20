@@ -52,4 +52,13 @@ public class HitmanController {
         service.deleteHitmanById(id);
         return new ResponseEntity<>("The Hitman was successfully deleted", HttpStatus.OK);
     }
+
+    @PutMapping("/editHitman")
+    public ResponseEntity<Object> editHitman(@RequestBody Hitman hitman) {
+        if (hitman.getId() <= 0 || hitman.getId() > service.getAllHitmans().size()) {
+            return new ResponseEntity<>("Wrong id!", HttpStatus.BAD_REQUEST);
+        }
+        Object newHitman = service.createNewHitman(hitman);
+        return new ResponseEntity<>(newHitman, HttpStatus.CREATED);
+    }
 }

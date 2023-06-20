@@ -44,7 +44,7 @@ public class WeaponController {
         return new ResponseEntity<>("The weapon with " + weaponId + " was successfully deleted!", HttpStatus.OK);
     }
 
-    @GetMapping("/getWeapon/{id}")
+    @GetMapping("/getWeaponById/{id}")
     public ResponseEntity<Object> getWeaponById(@PathVariable("id") int weaponId) {
         if (weaponId == 0) {
             return new ResponseEntity<>("Something wrong with your id parameter", HttpStatus.BAD_REQUEST);
@@ -53,5 +53,17 @@ public class WeaponController {
         if (weapon == null || weaponId > weaponImplement.getAllWeapons().size()) {
             return new ResponseEntity<>("The Weapon is not found", HttpStatus.NOT_FOUND);
         } else return new ResponseEntity<>(weapon, HttpStatus.OK);
+    }
+
+    @PutMapping("/editWeapon")
+    public ResponseEntity<Object> editWeapon(@RequestBody Weapon weapon) {
+        if (weapon.getHitmanLinkId() > hitmanServiceImplement.getAllHitmans().size()) {
+            return new ResponseEntity<>("You need to change your 'hitmanLinkId', because the Hitman with this id is not exists!",
+                    HttpStatus.BAD_REQUEST);
+        } else if (weapon.getId() <= 0) {
+            return new ResponseEntity<>("Wrong Id!", HttpStatus.BAD_REQUEST);
+        }
+        Weapon weapon1 = weaponImplement.createNewWeapon(weapon);
+        return new ResponseEntity<>(weapon1, HttpStatus.CREATED);
     }
 }
