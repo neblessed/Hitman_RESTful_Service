@@ -1,4 +1,4 @@
-package com.hitmans.api;
+package com.hitmans.api.controller;
 
 import com.hitmans.api.model.Hitman;
 import com.hitmans.api.model.Weapon;
@@ -50,7 +50,7 @@ public class WeaponController {
             return new ResponseEntity<>("Something wrong with your id parameter", HttpStatus.BAD_REQUEST);
         }
         Object weapon = weaponImplement.getWeaponById(weaponId);
-        if (weapon == null || weaponId > weaponImplement.getAllWeapons().size()) {
+        if (weapon == null || weaponId > weaponImplement.getAllWeapons().size()+1) {
             return new ResponseEntity<>("The Weapon is not found", HttpStatus.NOT_FOUND);
         } else return new ResponseEntity<>(weapon, HttpStatus.OK);
     }

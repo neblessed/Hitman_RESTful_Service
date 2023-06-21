@@ -1,4 +1,4 @@
-package com.hitmans.api;
+package com.hitmans.api.controller;
 
 
 import com.hitmans.api.model.Hitman;
@@ -18,7 +18,6 @@ public class HitmanController {
     @Autowired
     HitmanServiceImplement service;
 
-
     @GetMapping("/getAllHitmans")
     public List<Hitman> getAllHitmans() {
         return service.getAllHitmans();
@@ -30,7 +29,7 @@ public class HitmanController {
             return new ResponseEntity<>("Something wrong with your id parameter", HttpStatus.BAD_REQUEST);
         }
         Object hitman = service.getHitmanById(id);
-        if (hitman == null || id > service.getAllHitmans().size()) {
+        if (hitman == null || id > service.getAllHitmans().size() + 1) {
             return new ResponseEntity<>("The Hitman is not found", HttpStatus.NOT_FOUND);
         } else return new ResponseEntity<>(hitman, HttpStatus.OK);
     }
