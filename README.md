@@ -8,7 +8,7 @@
 - **PUT** (endpoint: "/editHitman")
 - **POST** (endpoin: "/createHitman"):
 
-**Post/Put Hitman Body Example:**
+**Hitman Body Example:**
 ```
     {
         "id": 1,
@@ -27,7 +27,7 @@
 - **PUT** (endpoint: "/editWeapon")
 - **POST** (endpoint: "/createWeapon"):
 
-**Post/Put Weapon Body Example:**
+**Weapon Body Example:**
 ```
     {
         "id": 1,
